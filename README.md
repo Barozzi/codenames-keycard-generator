@@ -1,6 +1,10 @@
 # Codenames Keycard Generator
 
+![screenshot](screenshot.png)
+
 I was on vacation with my family and we forgot to pack our copy of the game Codenames. I wrote this keycard generator so that we would not miss out on any of Codenaming fun.
+
+
 
 
 ## TL;DR
