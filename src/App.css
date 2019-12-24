@@ -30,7 +30,7 @@
   padding-top: 8px;
   padding-bottom: 12px;
   text-align: center;
-  filter: drop-shadow(0 2 1 crimson);
+  filter: drop-shadow(0 0 0.75rem crimson);
   color: #F0FFF0;
 }
 
