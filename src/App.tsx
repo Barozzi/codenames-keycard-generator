@@ -18,12 +18,15 @@ The hint's number tells the field operatives how many words in the grid are rela
 After a spymaster gives the hint with its word and number, their field operatives make guesses about which code name cards bear words related to the hint and point them out, one at a time. When a code name card is pointed out, the spymaster covers that card with an appropriate identity card – a blue agent card, a red agent card, an innocent bystander card, or the assassin card – as indicated on the spymasters' map of the grid. If the assassin is pointed out, the game ends immediately, with the team who identified him losing. If an agent of the other team is pointed out, the turn ends immediately, and that other team is also one agent closer to winning. If an innocent bystander is pointed out, the turn simply ends.
 
 The game ends when all of one team's agents are identified (winning the game for that team),[3] or when one team has identified the assassin (losing the game).
-`;
+`.split('\n');
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <div className="title">Codenames</div>
+      <div className="reload">
+        <a className="reload" href="_blank"><button className="reload-key">Generate Keycard</button></a>
+      </div>
       <div className="content">
         <table className="key-card">
           <tbody>
@@ -39,7 +42,7 @@ const App: React.FC = () => {
       </div>
       <div className='title'>Rules</div>
       <div className="rules">
-        {rules}
+        {rules.map((line, i) => (<p key={i}>{line}</p>))}
       </div>
     </div>
   );

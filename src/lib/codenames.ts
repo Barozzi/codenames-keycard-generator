@@ -7,42 +7,37 @@ const keys = [
   3, // black
 ]
 
-export function shuffle<T>(arr: T[]): T[] {
-  return [...arr].sort((_,__) => 0.5 - Math.random())
-}
 
+/**
+ * @name generateKeycard
+ * @desc Randomly generates a Codenames keycard.
+ * #     Scrambles the order of the cells and creates a 5x5 grid represented i a 2d array.
+ * #     This method is called in the App template each time it is loaded.
+ */
 export function generateKeycard(): string[][] {
   const shuffled = shuffle(keys);
-  const rows: (number[] | undefined)[] = shuffled.map((_, index: number, arr: number[]) => {
+  const rows: (string[] | undefined)[] = shuffled.map((_, index: number, arr: number[]) => {
     if (index === 0 || (index % 5) === 0) {
-      return arr.slice(index, index+5);
+      return convertNumbersToColorCodes(arr.slice(index, index+5));
     }
     return undefined;
   });
-  const filtered: number[][] = filterUndef(rows);
-  return toString(filtered);
+  return compact(rows);
 }
 
-export function filterUndef<T>(ts: (T | undefined)[]): T[] {
-  return ts.filter((t: T | undefined): t is T => !!t)
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function shuffle<T>(arr: T[]): T[] {
+  return [...arr].sort((_,__) => 0.3 - Math.random())
 }
 
-export function toString(arr: number[][]): string[][] {
-  return arr.map(row => {
-    return row.map(cell => {
-      if (cell === 0) {
-        return 'grey';
-      } else if (cell === 1) {
-        return 'blue';
-      } else if (cell === 2) {
-        return 'red';
-      } else if (cell === 3) {
-        return 'black';
-      } else {
-        return 'ERROR'
-      }
-    })
-  })
+export function compact<T>(x: (T | undefined)[]): T[] {
+  return x.filter((e: T | undefined): e is T => !!e)
+}
+
+export function convertNumbersToColorCodes(arr: number[]): string[] {
+  const translationKey = ['grey', 'blue', 'red', 'black'];
+  return arr.map(cell => translationKey[cell]);
 }
 
 export default generateKeycard;
