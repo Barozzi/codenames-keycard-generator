@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <div className="App">
       <div className="title">Codenames</div>
       <div className="reload">
-        <a className="reload" href="_blank"><button className="reload-key">Generate Keycard</button></a>
+        <a className="reload" href="."><button className="reload-key">Generate Keycard</button></a>
       </div>
       <div className="content">
         <KeyCard />
